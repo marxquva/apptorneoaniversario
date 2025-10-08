@@ -1,0 +1,35 @@
+@use "sass:map";
+@use "@angular/material" as mat;
+
+html {
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$blue-palette,
+        tertiary: mat.$orange-palette,
+        theme-type: light
+      ),
+      typography: (
+        plain-family: Roboto,
+        brand-family: Open Sans,
+        bold-weight: 900,
+        medium-weight: 500,
+        regular-weight: 300,
+      ),
+      density: 0,
+    )
+  );
+
+  @include mat.theme-overrides(
+    (
+      primary: rgb(93, 135, 255),
+      error: rgb(250, 137, 107),
+      body-medium-size: 14px,
+      body-large-size: 14px,
+      outline-variant: #d7dde2,
+      level1: 0px 12px 24px -4px rgb(145 158 171 / 30%),
+      level2: rgba(145, 158, 171, 0.12) 0px 1px 16px,
+      level3: 0px 12px 24px -4px rgb(145 158 171 / 30%),
+    )
+  );
+}

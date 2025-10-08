@@ -1,0 +1,31 @@
+<!--<div class="bg-light-primary rounded">
+  <div class="box-breadcrumb">
+    <h4 class="h-title">{{ title }}</h4>
+    <div class="d-flex align-items-center overflow-hidden">
+      <ul class="breadcrumb">
+        <ng-container *ngFor="let item of items; let i = index">
+          <li class="breadcrumb-item" [class.active]="i === items.length - 1">
+            {{ item }}
+          </li>
+          <li class="breadcrumb-item" *ngIf="i < items.length - 1">
+            <mat-icon class="icon-10" fontIcon="circle-filled"></mat-icon>
+          </li>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</div>-->
+<mat-card class="bg-light-primary shadow-none overflow-hidden m-b-10">
+  <mat-card-content class="p-32 p-b-0">
+    <div class="row justify-content-between align-items-center">
+      <!-- Left Column -->
+      <div class="col-sm-6">
+        <mat-card-title>Bienvenido {{userName?.equipo.nombre}}!</mat-card-title>
+        <mat-card-subtitle class="f-s-14 f-w-400 m-t-16 lh-24 m-b-24">
+          Plataforma de seguimiento del torneo Campeones del metal en su primera edicion.
+        </mat-card-subtitle>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+

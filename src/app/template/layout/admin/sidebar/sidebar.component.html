@@ -1,0 +1,30 @@
+<ng-scrollbar style="height: 76vh">
+  <mat-nav-list>
+    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="menu-tree">
+
+      <!-- Nodo con hijos -->
+      <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodeToggle>
+        <li class="father-node">
+          <div class="mat-tree-node">
+            <mat-icon>{{node.icon}}</mat-icon>
+            <span>{{node.name}}</span>
+            <mat-icon class="expand-icon">
+              {{treeControl.isExpanded(node) ? 'expand_less' : 'expand_more'}}
+            </mat-icon>
+          </div>
+        </li>
+      </mat-tree-node>
+
+      <!-- Nodo hoja -->
+      <mat-tree-node *matTreeNodeDef="let node">
+        <li>
+          <a mat-list-item [routerLink]="[node.route]" routerLinkActive="active-link">
+            <mat-icon matListIcon>{{node.icon}}</mat-icon>
+            <span matLine>{{node.name}}</span>
+          </a>
+        </li>
+      </mat-tree-node>
+
+    </mat-tree>
+  </mat-nav-list>
+</ng-scrollbar>

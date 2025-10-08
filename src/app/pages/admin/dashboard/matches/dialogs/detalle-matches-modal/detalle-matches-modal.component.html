@@ -1,0 +1,12 @@
+<h2 mat-dialog-title>Detalles del Partido</h2>
+<mat-dialog-content>
+  <p><strong>Equipo 1:</strong> {{ data.equipo1 }}</p>
+  <p><strong>Equipo 2:</strong> {{ data.equipo2 }}</p>
+  <p><strong>Hora:</strong> {{ data.hora }}</p>
+  <p><strong>Resultado:</strong> {{ data.resultado }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="bg-secondary text-white" (click)="dialogRef.close()">Cerrar</button>
+</mat-dialog-actions>
+
+

@@ -1,0 +1,20 @@
+<div class="p-24">
+    <div class="d-flex align-items-center gap-16">
+        <img width="72px" height="72px" class="rounded-circle" [src]="equipoSeleccionado?.logotipo">
+        <div>
+            <h5 class="f-w-600 f-s-16 h-title"> {{equipoSeleccionado?.nombre_equipo}} </h5>
+            <span class="f-w-400 f-s-12"> Representante: </span>
+            <span class="f-w-400 f-s-12"> {{equipoSeleccionado?.representante}} </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 m-t-32">
+            <span class="f-s-12">Categoria</span>
+            <h5 class="f-w-600 lh-sm f-s-14 h-title"> {{equipoSeleccionado?.nombre_categoria_deporte}} </h5>
+        </div>
+        <div class="col-12 m-t-32">
+            <span class="f-s-12">Descripcion</span>
+            <h5 class="f-w-400 f-s-14 h-title">{{equipoSeleccionado?.descripcion}}</h5>
+        </div>
+    </div>
+</div>

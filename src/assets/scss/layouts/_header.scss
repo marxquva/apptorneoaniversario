@@ -1,0 +1,40 @@
+@use "../variables" as *;
+
+html .header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 9;
+  height: $header-height;
+  background-color: $primary;
+  color: var(--mat-sys-on-primary);
+  .mat-icon {
+    color: var(--mat-sys-on-primary);
+  }
+}
+
+.title {
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.rounded-circle {
+    border-radius: 50% !important;
+}
+
+.profile-dd {
+    margin-top: -5px;
+    margin-left: -5px;
+}
+.object-cover {
+    object-fit: cover;
+
+}
+.topbar-dd {
+  min-width: 220px !important;
+}
+
+

@@ -1,0 +1,20 @@
+.layout {
+  height: calc(100vh - 64px);
+}
+
+.layout-sidebar {
+  width: 240px;
+}
+
+.layout-content {
+  padding: 10px;
+  /*background: #f5f5f5;*/
+  min-height: 100%;
+}
+
+/* Responsive: en pantallas pequeñas, forzamos sidenav tipo overlay */
+@media (max-width: 768px) {
+  .layout-sidebar {
+    position: absolute;
+  }
+}

@@ -1,0 +1,21 @@
+<app-breadcrumb [title]="'Equipos'" [items]="breadcrumbItems"></app-breadcrumb>
+<ng-container *ngIf="isLoading(); else content">
+  <div class="loading-container">
+    <div class="d-flex flex-col align-items-center">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p class="m-t-16">Cargando equipos...</p>
+    </div>
+  </div>
+</ng-container>
+
+<ng-template #content>
+  <div class="wrap-container" [ngClass]="{ 'solo-detalle': !mostrar }">
+    <div class="grid-item" *ngIf="mostrar">
+      <app-listado-team></app-listado-team>
+    </div>
+    <div class="grid-item">
+      <app-detail-team></app-detail-team>
+    </div>
+  </div>
+</ng-template>
+

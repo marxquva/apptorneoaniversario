@@ -1,0 +1,352 @@
+@use '@angular/material' as mat;
+@import 'material-icons/iconfont/material-icons.css';
+
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/*************************TEXTOS*************************/
+.f-s-12 {
+    font-size: 12px !important;
+}
+.f-s-14 {
+    font-size: 14px !important;
+}
+.f-s-16 {
+    font-size: 16px !important;
+}
+.f-s-20 {
+    font-size: 20px !important;
+}
+.f-s-21 {
+    font-size: 21px !important;
+}
+
+.f-w-400 {
+    font-weight: 500 !important;
+}
+.f-w-500 {
+    font-weight: 500 !important;
+}
+.f-w-600 {
+    font-weight: 600 !important;
+}
+
+.lh-sm {
+    line-height: 20px !important;
+}
+
+
+.h-title{
+    margin: 0;
+}
+
+
+/*************************FLEX*************************/
+.d-flex {
+    display: flex !important;
+}
+.flex-wrap {
+    flex-wrap: wrap !important;
+}
+.flex-col {
+    flex-direction: column !important;
+}
+.justify-content-center {
+    justify-content: center !important;
+}
+.justify-content-end {
+    justify-content: flex-end !important;
+}
+.justify-content-between {
+    justify-content: space-between !important;
+}
+.flex-20 {
+  flex: 0 0 20%;
+  max-width: 20%;
+}
+.flex-30 {
+  flex: 0 0 30%;
+  max-width: 30%;
+}
+.flex-40 {
+  flex: 0 0 40%;
+  max-width: 40%;
+}
+.flex-50 {
+  flex: 0 0 50%;
+  max-width: 50%;
+}
+.flex-60 {
+  flex: 0 0 60%;
+  max-width: 60%;
+}
+.flex-70 {
+  flex: 0 0 70%;
+  max-width: 70%;
+}
+.flex-80 {
+  flex: 0 0 80%;
+  max-width: 80%;
+}
+@media (max-width: 768px) {
+  .flex-20,
+  .flex-30,
+  .flex-40,
+  .flex-50,
+  .flex-60,
+  .flex-70,
+  .flex-80 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+}
+
+.align-items-center {
+    align-items: center !important;
+}
+
+.gap-3 {
+    gap: 3px !important;
+}
+.gap-8 {
+    gap: 8px !important;
+}
+.gap-16 {
+    gap: 16px !important;
+}
+.gap-20 {
+    gap: 20px !important;
+}
+
+/*************************BLOQUES*************************/
+.d-block {
+    display: block !important;
+}
+.overflow-hidden {
+    overflow: hidden;
+}
+
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.rounded {
+    border-radius: 7px !important;
+}
+
+.rounded-pill {
+    border-radius: 25px !important;
+}
+.w-10{
+    width: 10%;
+}
+.w-100 {
+    width: 100%;
+}
+/*************************PADDING*************************/
+.p-6{
+    padding: 6px;
+}
+.p-16 {
+    padding: 16px !important;
+}
+.p-24{
+    padding: 24px !important;
+}
+.p-t-2{
+    padding-top: 2px!important;
+}
+.p-t-10 {
+    padding-top: 10px !important;
+}
+.p-r-10{
+    padding-right: 10px !important;
+}
+.p-x-4 {
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+.p-x-6 {
+    padding-left: 7px !important;
+    padding-right: 7px !important;
+}
+.p-x-24 {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+}
+.p-y-2 {
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+.p-y-4 {
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+.p-y-6 {
+    padding-top: 6px !important;
+    padding-bottom: 6px !important;
+}
+.p-y-12 {
+    padding-top: 12px !important;
+    padding-bottom: 12px !important;
+}
+.p-y-30 {
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+}
+
+
+/*************************MARGIN*************************/
+.m-t-auto {
+    margin-top: auto !important;
+}
+.m-l-auto {
+    margin-left: auto !important;
+}
+.m-r-auto {
+    margin-right: auto !important;
+}
+
+.m-t-4{
+    margin-top: 4px!important;
+}
+.m-t-8 {
+    margin-top: 8px !important;
+}
+.m-t-12 {
+    margin-top: 12px !important;
+}
+.m-t-16 {
+    margin-top: 16px !important;
+}
+.m-t-30 {
+    margin-top: 30px !important;
+}
+.m-t-32 {
+    margin-top: 32px !important;
+}
+
+.m-l-6 {
+    margin-left: 6px !important;
+}
+.m-l-12 {
+    margin-left: 12px !important;
+}
+.m-l-16 {
+    margin-left: 16px !important;
+}
+
+.m-b-30 {
+    margin-bottom: 30px !important;
+}
+.m-y-8 {
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+}
+
+
+/*************************BREADCRUMB*************************/
+.box-breadcrumb{
+    padding: 20px;
+    margin-bottom: 10px;
+}
+.breadcrumb {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+.breadcrumb-item {
+    padding: 0 10px 0 0;
+}
+
+
+.user-menu.mat-mdc-menu-panel {
+  min-width: 380px!important;
+  max-width: 420px!important;
+}
+.profile-bar {
+    padding: 20px 10px !important;
+}
+.name-user {
+    font-weight: 600 !important;
+    line-height: 12px;
+    margin: auto;
+}
+
+/*************************TABLA*************************/
+.table-responsive {
+  overflow-x: auto;
+  td,
+  mat-cell {
+    white-space: nowrap;
+    padding: 16px;
+  }
+}
+
+/*************************DISTRIBUCION*************************/
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.grid-container-middle {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(560px, 1fr));
+  gap: 24px;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;  // centrar horizontalmente
+  align-items: center;      // centrar verticalmente
+  height: 60vh;             // o 100vh para pantalla completa
+  width: 100%;
+}
+
+/*************************DISTRIBUCION*************************/
+.wrap-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr; /* Por defecto: dos columnas */
+  gap: 16px;
+}
+
+.wrap-container.solo-detalle {
+  grid-template-columns: 1fr; /* Solo una columna cuando el primero no está */
+}
+/*
+.grid-item {
+  width: 100%;
+}*/
+
+/* Asegurar que los elementos se acomoden correctamente en móviles */
+@media (max-width: 768px) {
+    .box-search.d-flex.align-items-center.justify-content-between {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-wrapper {
+        margin-top: 12px;
+    }
+
+    .h-title {
+        font-size: 18px;
+    }
+
+    .responsive-row {
+        flex-direction: column;
+        align-items: stretch; /* para que cada hijo ocupe el 100% */
+        text-align: center;
+        justify-content: space-between;
+    }
+}

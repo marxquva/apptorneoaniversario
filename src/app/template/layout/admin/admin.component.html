@@ -1,0 +1,35 @@
+<div>
+  <app-header
+    (toggleSidebar)="toggleSidebar()"
+    [isMenuOpened]="isShowSidebar">
+  </app-header>
+
+  <mat-sidenav-container class="layout blue_theme light-theme">
+    <mat-sidenav
+      #sidenav
+      [(opened)]="isShowSidebar"
+      [mode]="isOver ? 'over' : 'side'"
+      class="layout-sidebar">
+
+      <app-sidebar></app-sidebar>
+      <div class="m-t-auto profile-bar">
+        <div class="bg-light-secondary d-flex align-items-center rounded p-16">
+          <img [src]="userName?.equipo.logotipo" width="40" class="rounded-circle">
+          <div class="m-l-16">
+            <h5 class="name-user">{{userName?.equipo.nombre}}</h5>
+            <!--<span class="f-s-12">{{userName?.equipo.nombre}}</span>-->
+          </div>
+          <div class="m-l-auto">
+              <button mat-mini-fab class="bg-secondary text-white" aria-label="Example icon button with a bookmark icon">
+                <mat-icon fontIcon="power"></mat-icon>
+              </button>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="layout-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

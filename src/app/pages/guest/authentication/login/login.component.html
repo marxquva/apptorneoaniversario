@@ -1,0 +1,69 @@
+<div class="login-container">
+  <mat-card class="login-card">
+    <mat-card-content>
+
+      <div class="text-center">
+          <img src="assets/images/logos/dark-logo.svg" class="align-middle m-2" alt="logo" />
+      </div>
+
+      <div class="or-border m-t-30">Iniciar sesion</div>
+
+      <!-- Mensaje de Éxito -->
+      <div *ngIf="successMessage" class="alert success">
+        {{ successMessage }}
+      </div>
+
+      <!-- Mensaje de Error -->
+      <div *ngIf="errorMessage" class="alert error">
+        {{ errorMessage }}
+      </div>
+
+
+      <form [formGroup]="loginForm" (ngSubmit)="submit()" class="login-form m-t-30">
+        <mat-card>
+          <mat-form-field appearance="outline">
+            <mat-label>Torneo</mat-label>
+            <input type="text" matInput formControlName="torneoname" [matAutocomplete]="auto">
+            <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+              <mat-option *ngFor="let torneo of filteredTorneos$ | async" [value]="torneo.nombre_torneo">
+                {{ torneo.nombre_torneo }}
+              </mat-option>
+            </mat-autocomplete>
+            <mat-error *ngIf="loginForm.get('torneoname')?.hasError('required') && loginForm.get('torneoname')?.touched">
+              El torneo es obligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Equipo</mat-label>
+            <mat-select formControlName="equipo">
+              <mat-option *ngFor="let equipo of equipos$ | async" [value]="equipo.nombre_equipo">
+                {{ equipo.nombre_equipo }}
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="loginForm.get('equipo')?.hasError('required') && loginForm.get('equipo')?.touched">
+              El equipo es obligatorio
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password">
+            <button mat-icon-button matSuffix type="button" (click)="togglePassword()">
+              <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+            </button>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('required') && loginForm.get('password')?.touched">
+              La contraseña es obligatoria
+            </mat-error>
+            <mat-error *ngIf="loginForm.get('password')?.hasError('minlength')">
+              Mínimo 6 caracteres
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" class="full-width bg-primary" [disabled]="loginForm.invalid">Ingresar</button>
+        </mat-card>
+      </form>
+
+    </mat-card-content>
+  </mat-card>
+</div>

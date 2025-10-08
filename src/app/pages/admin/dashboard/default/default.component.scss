@@ -1,0 +1,12 @@
+.grid-two-column {
+  display: grid;
+  grid-template-columns: 30% 1fr; // 30% y el resto
+  gap: 10px; // espacio entre columnas
+  align-items: start; // alinear componentes arriba (opcional)
+}
+
+@media (max-width: 768px) {
+  .grid-two-column {
+    grid-template-columns: 1fr; // una sola columna
+  }
+}

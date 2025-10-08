@@ -1,0 +1,45 @@
+.menu-tree {
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* cada nodo se estira como item de lista */
+.mat-tree-node
+ {
+  display: block;
+  width: 100%;
+}
+
+/* alinear el contenido de cada nodo */
+.mat-tree-node > li {
+  display: flex;
+  width: 100%;
+  /*border-bottom: 1px solid #d7dde2;*/
+}
+
+/* íconos al inicio con espaciado */
+.mat-tree-node mat-icon {
+  margin-right: 12px;
+}
+
+/* cuando el enlace está activo */
+.active-link {
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  padding: 8px 10px !important;
+}
+
+.father-node .mat-tree-node {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 12px;
+  box-sizing: border-box;
+}
+
+/* icono de expandir siempre a la derecha */
+.father-node .expand-icon {
+  margin-left: auto;
+}

@@ -1,0 +1,89 @@
+
+<div class="">
+      <mat-card>
+        <mat-card-content>
+          <div class="box-search d-flex align-items-center justify-content-between gap-3">
+            <!-- Header -->
+            <div class="d-flex align-items-center gap-8">
+              <h5 class="f-w-500 f-s-20 h-title">Jugadores de {{equipoSeleccionado?.nombre_equipo}}</h5>
+              <div class="p-x-6 p-y-2 rounded-pill bg-secondary text-white">
+                <div class="f-s-14 lh-sm">{{ visiblePlayers() }} de {{ totalPlayers() }}</div>
+              </div>
+            </div>
+
+            <!-- Search bar -->
+            <div class="search-wrapper">
+              <mat-form-field appearance="outline">
+                <mat-icon matPrefix>search</mat-icon>
+                <input
+                  matInput
+                  #searchInput
+                  placeholder="Buscar jugador"
+                  (input)="onSearchChange(searchInput.value)"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+      <div class="grid-container">
+
+        <ng-container>
+          <mat-card *ngFor="let player of filteredPlayers(); let i = index" class="m-b-16">
+            <mat-card-content class="text-center">
+              <img
+                [src]="player.Persona.imagen || (i % 2 === 0 ? 'assets/images/profile/user-1.jpg' : 'assets/images/profile/user-2.jpg')"
+                [alt]="player.nombre_jugador"
+                width="100"
+                class="rounded-circle border p-5"
+              />
+
+              <div class="d-flex flex-col gap-3 m-t-4">
+                <div>
+                  <h4 class="mat-mdc-card-title">{{ player.nombre_jugador }}</h4>
+                  <span>Camiseta: </span>
+                  <span class="f-s-12 f-w-600">{{ player.numero_camiseta }}</span>
+                  
+                  <span> | </span>
+                  <span>
+                    <span [appSituacionStyle]="player.situacion" class="p-x-6 p-y-4">
+                      {{ player.situacion | situacion }}
+                    </span>
+
+                  </span>
+                  <span> | Edad: </span>
+                  <span class="f-s-12 f-w-600">{{ player.Persona.fecha_nacimiento | fechaNacimiento:'edad' }}</span>
+                  
+                </div>
+                <mat-divider class="p-y-4 m-t-4"></mat-divider>
+                <div class="d-flex gap-8 justify-content-center">
+                  <ng-container *ngIf="player.Persona.urlfacebook; else noFacebook">
+                    <a mat-button class="bg-secondary" [href]="player.Persona.urlfacebook" target="_blank">
+                      Facebook
+                    </a>
+                  </ng-container>
+
+                  <ng-template #noFacebook>
+                    <span class="text-muted f-w-600">Sin Facebook</span>
+                  </ng-template>
+                </div>
+
+                <!--<div class="d-flex gap-8 justify-content-center">
+                  <a mat-button class="bg-secondary" [href]="player.Persona.urlfacebook" target="_blank">Facebook</a>
+                </div>-->
+              </div>
+            </mat-card-content>
+            <!--<mat-divider></mat-divider>-->
+          </mat-card>
+        </ng-container>
+
+      </div>
+
+      <div *ngIf="players().length === 0" class="d-flex justify-content-center">
+          <app-sin-datos [title]="'Sin jugadores'"></app-sin-datos>
+      </div>
+</div>
+
+
+

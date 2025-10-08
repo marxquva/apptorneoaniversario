@@ -1,0 +1,32 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Usuario">
+  <img [src]="userName?.equipo.logotipo" class="rounded-circle object-cover icon-35 profile-dd" />
+</button>
+
+<mat-menu #menu="matMenu" class="user-menu">
+
+  <mat-card class="user-card">
+    <mat-card-content class="user-card-content">
+      <div class="user-avatar">
+        <div class="avatar-wrapper">
+          <img class="avatar-img" [src]="userName?.equipo.logotipo" alt="avatar">
+        </div>
+      </div>
+
+      <div class="user-info-wrapper">
+        <mat-card-title class="user-name">{{userName?.equipo.nombre}}</mat-card-title>
+        <p class="user-position">Equipo del torneo</p>
+        <!--<p class="user-site">emailcontacto.com</p>-->
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <button mat-menu-item (click)="onProfile()">
+    <mat-icon color="primary">person</mat-icon>
+    <span>Mi perfil</span>
+  </button>
+
+  <button mat-menu-item (click)="onLogout()">
+    <mat-icon color="accent">logout</mat-icon>
+    <span>Cerrar sesión</span>
+  </button>
+</mat-menu>
