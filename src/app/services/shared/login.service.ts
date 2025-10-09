@@ -55,7 +55,7 @@ export class LoginService {
     },
     {
         "idequipo": 10,
-        "nombre_equipo": "Yawar Warriors"
+        "nombre_equipo": "Yawar Warrior"
     },
     {
         "idequipo": 6,
