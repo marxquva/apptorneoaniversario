@@ -58,7 +58,6 @@ export const routes: Routes = [
             (c) => c.DetailTeamComponent
           ),
       },
-
       {
         path: 'matches',
         loadComponent: () =>
@@ -74,8 +73,15 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'messages',
+        loadComponent: () =>
+          import('./pages/admin/dashboard/messages/messages.component').then(
+            (c) => c.MessagesComponent
+          ),
+      },
+      {
         path: '',
-        redirectTo: 'dashboard',
+        redirectTo: 'teams',
         pathMatch: 'full',
       },
     ],

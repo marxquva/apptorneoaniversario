@@ -11,7 +11,7 @@ export class SituacionPipe implements PipeTransform {
       case 2:
         return 'En revisión';
       case 3:
-        return 'Observado';
+        return 'Requiere Filtro';
       case 4:
         return 'No permitido';
       default:
