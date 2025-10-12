@@ -299,11 +299,21 @@ html, body {
   gap: 24px;
 }
 
+
 .grid-container-middle {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(560px, 1fr));
   gap: 24px;
 }
+
+/* Para pantallas pequeñas */
+@media (max-width: 600px) {
+  .grid-container-middle {
+    grid-template-columns: 1fr; /* Una columna que ocupe todo el ancho */
+    gap: 16px; /* Opcional, reducir el gap para pantallas chicas */
+  }
+}
+
 
 .loading-container {
   display: flex;

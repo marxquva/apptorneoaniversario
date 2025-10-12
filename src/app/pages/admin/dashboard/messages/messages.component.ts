@@ -4,7 +4,7 @@ import { BreadcrumbComponent } from '@shared/breadcrumb/breadcrumb.component';
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
 import { SinDatosComponent } from "@components/shared/sin-datos/sin-datos.component"; 
-import { MessageService } from '@services/comunicados/message';
+import { MessageService } from '@services/comunicados/message.service';
 import { LoadingService } from '@services/shared/loading.service';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
