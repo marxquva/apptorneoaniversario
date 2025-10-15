@@ -115,63 +115,63 @@
         <h2 class="text-center m-t-24 m-b-16">{{ grupo.nombre_cancha }}</h2>
         <div class="grid-container-middle">
             <mat-card *ngFor="let partido of grupo.partidos">
-            <mat-card-content class="text-center">
+                <mat-card-content class="text-center">
 
-                <div class="d-flex flex-col gap-20">
+                    <div class="d-flex flex-col gap-20">
 
-                <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                    <span class="bg-warning text-white rounded p-6">
-                    {{ partido.hora_partido | date: 'shortTime' }}
-                    </span>
-                </div>
+                        <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
+                            <span class="bg-warning text-white rounded p-6 min-title-text">
+                                {{ partido.hora_partido | date: 'shortTime' }}
+                            </span>
+                        </div>
 
-                <div class="d-flex align-items-center justify-content-center">
+                        <div class="d-flex align-items-center justify-content-center">
 
-                    <img
-                    [src]="partido.localEquipo?.logotipo || 'assets/images/profile/default.jpg'"
-                    alt="Local"
-                    width="70"
-                    class="rounded"
-                    />
-                    <div class="m-l-12">
-                    <mat-card-title>{{ partido.localEquipo?.nombre_equipo }}</mat-card-title>
+                            <img
+                            [src]="partido.localEquipo?.logotipo || 'assets/images/profile/default.jpg'"
+                            alt="Local"
+                            width="70"
+                            class="rounded"
+                            />
+                            <div class="m-l-12">
+                                <mat-card-title>{{ partido.localEquipo?.nombre_equipo }}</mat-card-title>
+                            </div>
+
+                            <div class="d-flex align-items-center m-l-12">
+                                <span class="d-flex align-items-center bg-light-secondary icon-30 justify-content-center rounded text-secondary">
+                                    {{ partido.localGoles }}
+                                </span>
+                            </div>
+
+                            <div class="d-flex align-items-center m-l-12">vs</div>
+
+                            <div class="d-flex align-items-center m-l-12">
+                                <span class="d-flex align-items-center bg-light-secondary icon-30 justify-content-center rounded text-secondary">
+                                    {{ partido.visitanteGoles }}
+                                </span>
+                            </div>
+
+                            <div class="m-l-12">
+                                <mat-card-title>{{ partido.visitanteEquipo?.nombre_equipo }}</mat-card-title>
+                            </div>
+
+                            <img
+                            [src]="partido.visitanteEquipo?.logotipo || 'assets/images/profile/default.jpg'"
+                            alt="Visitante"
+                            width="70"
+                            class="rounded m-l-12"
+                            />
+                        </div>
+
+                        <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
+                            <span class="bg-light-secondary rounded p-6 min-title-text">
+                                {{ partido.situacion.nombre_situacion }}
+                            </span>
+                        </div>
+
                     </div>
 
-                    <div class="d-flex align-items-center m-l-12">
-                    <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
-                        {{ partido.localGoles }}
-                    </span>
-                    </div>
-
-                    <div class="d-flex align-items-center m-l-12">vs</div>
-
-                    <div class="d-flex align-items-center m-l-12">
-                    <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
-                        {{ partido.visitanteGoles }}
-                    </span>
-                    </div>
-
-                    <div class="m-l-12">
-                    <mat-card-title>{{ partido.visitanteEquipo?.nombre_equipo }}</mat-card-title>
-                    </div>
-
-                    <img
-                    [src]="partido.visitanteEquipo?.logotipo || 'assets/images/profile/default.jpg'"
-                    alt="Visitante"
-                    width="70"
-                    class="rounded m-l-12"
-                    />
-                </div>
-
-                <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                    <span class="bg-light-secondary rounded p-6">
-                    {{ partido.situacion?.nombre_situacion }}
-                    </span>
-                </div>
-
-                </div>
-
-            </mat-card-content>
+                </mat-card-content>
             </mat-card>
         </div>
     </ng-container>

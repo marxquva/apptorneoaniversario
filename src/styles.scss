@@ -306,13 +306,67 @@ html, body {
   gap: 24px;
 }
 
-/* Para pantallas pequeñas */
-@media (max-width: 600px) {
-  .grid-container-middle {
-    grid-template-columns: 1fr; /* Una columna que ocupe todo el ancho */
-    gap: 16px; /* Opcional, reducir el gap para pantallas chicas */
+/* Ajustes para pantallas pequeñas */
+.grid-container-middle {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(560px, 1fr));
+  gap: 24px;
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr; // Solo una columna
+    gap: 12px;
+
+    mat-card {
+      padding: 2px!important;
+
+      mat-card-content {
+        padding: 2px!important;
+
+        img {
+          width: 40px !important;
+        }
+
+        mat-card-title {
+          font-size: 10px;
+          text-align: center;
+        }
+      }
+
+      img {
+        width: 40px !important;
+      }
+
+      .icon-30 {
+        width: 20px;
+        height: 20px;
+        font-size: 16px!important;
+      }
+
+      h2 {
+        font-size: 16px;
+        margin: 12px 0;
+      }
+
+      .p-6 {
+        padding: 4px;
+      }
+
+      .m-l-12 {
+        margin-left: 4px;
+      }
+
+      .gap-20 {
+        gap: 2px!important;
+      }
+      .min-title-text{
+        font-size: 12px!important;
+      }
+
+    
+    }
   }
 }
+
 
 
 .loading-container {
