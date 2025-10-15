@@ -106,7 +106,7 @@ export class TablaposicionesComponent implements OnInit {
     this.posicionesService.getTablaPosicionById(edicionId).subscribe({
       next: (res) => {
         if (res) {
-          console.log(res)
+          //console.log(res)
           this.posiciones.set(res);
         } else {
           this.posiciones.set([]);

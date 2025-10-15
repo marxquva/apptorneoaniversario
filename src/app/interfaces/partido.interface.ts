@@ -31,7 +31,7 @@ export interface Equipo {
 }
 
 export interface Situacion {
-  idsituacion: number;
+  idsituacionpartido: number;
   nombre_situacion: string;
 }
 

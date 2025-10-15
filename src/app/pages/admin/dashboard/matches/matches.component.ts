@@ -41,9 +41,9 @@ export class MatchesComponent implements OnInit {
   favoriteSeason = 0;
 
   fases = [
-    { id: 1, nombre: 'Fecha 1' },
-    { id: 2, nombre: 'Fecha 2' },
-    { id: 3, nombre: 'Fecha 3' }
+    { idfase: 1, nombre: 'Fecha 1' },
+    { idfase: 2, nombre: 'Fecha 2' },
+    { idfase: 3, nombre: 'Fecha 3' }
   ];
   faseSeleccionada = 1;
 
@@ -75,6 +75,7 @@ export class MatchesComponent implements OnInit {
           });
 
           this.partidos.set(partidosProcesados);
+          //console.log(this.partidos());
           this.actualizarFiltrados();
         } else {
           this.partidos.set([]);
@@ -132,55 +133,61 @@ export class MatchesComponent implements OnInit {
   }
 
   filtrarPorFase() {
-    // Aquí puedes filtrar los partidos según la faseSeleccionada
-    // Ejemplo:
-    // const partidosFiltradosPorFase = this.partidos().filter(p => p.faseId === this.faseSeleccionada);
-    // Actualiza el filtrado global:
     this.actualizarFiltrados();
   }
 
 
   private actualizarFiltrados() {
+
     const canchaSeleccionadaId = this.favoriteSeason;
     const textoBusqueda = this.searchTerm().toLowerCase();
+    const faseSeleccionadaId = this.faseSeleccionada;
 
-    const todosLosGrupos = this.agruparPorCancha();
+    // Filtramos los partidos según la fase
+    let partidosBase = this.partidos().filter(p =>
+      !faseSeleccionadaId || p.fase?.idfase === faseSeleccionadaId
+    );
 
-    // Filtramos por cancha
-    let gruposFiltrados = canchaSeleccionadaId === 0
-      ? todosLosGrupos
-      : todosLosGrupos.filter(g => g.idcancha === canchaSeleccionadaId);
+    // Agrupamos los partidos filtrados por cancha
+    const agrupado: { [id: number]: { nombre_cancha: string; partidos: Partido[] } } = {};
+    partidosBase.forEach(p => {
+      const id = p.cancha?.idcancha ?? 0;
+      const nombre = p.cancha?.nombre_cancha || 'Sin cancha';
+      if (!agrupado[id]) agrupado[id] = { nombre_cancha: nombre, partidos: [] };
+      agrupado[id].partidos.push(p);
+    });
 
-    if (textoBusqueda.trim() === '') {
-      // Si no hay texto, dejamos como está
-      this.partidosFiltrados.set(gruposFiltrados);
-      return;
+    let gruposFiltrados = Object.entries(agrupado).map(([id, value]) => ({
+      idcancha: +id,
+      nombre_cancha: value.nombre_cancha,
+      partidos: value.partidos
+    }));
+
+    // Filtro por cancha
+    if (canchaSeleccionadaId !== 0) {
+      gruposFiltrados = gruposFiltrados.filter(g => g.idcancha === canchaSeleccionadaId);
     }
 
-    // Filtramos los partidos dentro de cada grupo según el texto buscado
-    gruposFiltrados = gruposFiltrados.map(g => {
-      const partidosFiltradosPorEquipo = g.partidos.filter(p => {
-        const local = p.localEquipo?.nombre_equipo.toLowerCase() || '';
-        const visitante = p.visitanteEquipo?.nombre_equipo.toLowerCase() || '';
-        return local.includes(textoBusqueda) || visitante.includes(textoBusqueda);
-      });
-      return {
-        ...g,
-        partidos: partidosFiltradosPorEquipo
-      };
-    })
-    // Eliminamos grupos sin partidos
-    .filter(g => g.partidos.length > 0);
+    // Filtro por búsqueda
+    if (textoBusqueda.trim() !== '') {
+      gruposFiltrados = gruposFiltrados.map(g => {
+        const partidosFiltradosPorEquipo = g.partidos.filter(p => {
+          const local = p.localEquipo?.nombre_equipo?.toLowerCase() || '';
+          const visitante = p.visitanteEquipo?.nombre_equipo?.toLowerCase() || '';
+          return local.includes(textoBusqueda) || visitante.includes(textoBusqueda);
+        });
+        return { ...g, partidos: partidosFiltradosPorEquipo };
+      }).filter(g => g.partidos.length > 0);
+    }
 
     this.partidosFiltrados.set(gruposFiltrados);
   }
+
 
   onSearchChange(value: string) {
     this.searchTerm.set(value);
     this.actualizarFiltrados(); // Actualiza el filtrado cada vez que cambia el texto
   }
-
-
 
 
  abrirModalDetalle() {
@@ -193,6 +200,21 @@ export class MatchesComponent implements OnInit {
       },
       width: '400px'
     });
+  }
+
+  getResultadoClass(puntos: number): string {
+    switch(puntos) {
+      case 1:
+        return 'bg-light-secondary'; 
+      case 2:
+        return 'bg-light-primary';
+      case 4:
+        return 'bg-light-error text-error';
+      case 16:
+        return 'bg-light-success';
+      default:
+        return '';
+    }
   }
 
 }

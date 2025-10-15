@@ -16,7 +16,7 @@
                 <mat-form-field appearance="outline">
                     <mat-label>Seleccionar fecha</mat-label>
                     <mat-select [(ngModel)]="faseSeleccionada" (selectionChange)="filtrarPorFase()">
-                    <mat-option *ngFor="let fase of fases" [value]="fase.id">
+                    <mat-option *ngFor="let fase of fases" [value]="fase.idfase">
                         {{ fase.nombre }}
                     </mat-option>
                     </mat-select>
@@ -164,7 +164,7 @@
                         </div>
 
                         <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                            <span class="bg-light-secondary rounded p-6 min-title-text">
+                            <span [ngClass]="getResultadoClass(partido.situacion.idsituacionpartido)" class="rounded p-6 min-title-text">
                                 {{ partido.situacion.nombre_situacion }}
                             </span>
                         </div>
