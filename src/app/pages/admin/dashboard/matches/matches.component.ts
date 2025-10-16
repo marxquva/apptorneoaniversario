@@ -45,7 +45,7 @@ export class MatchesComponent implements OnInit {
     { idfase: 2, nombre: 'Fecha 2' },
     { idfase: 3, nombre: 'Fecha 3' }
   ];
-  faseSeleccionada = 1;
+  faseSeleccionada = 2;
 
 
 
