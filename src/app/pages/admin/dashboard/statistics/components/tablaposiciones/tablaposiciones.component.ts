@@ -110,8 +110,9 @@ export class TablaposicionesComponent implements OnInit {
           this.posiciones.set(res);
         } else {
           this.posiciones.set([]);
+          
         }
-        this.loadingService.setLoading(false);
+        this.loadingService.setLoading(false);        
 
       },
       error: (error) => {
@@ -120,6 +121,7 @@ export class TablaposicionesComponent implements OnInit {
       }
     });
   }
+
 
   getPuntosClass(puntos: number): string {
     switch(puntos) {

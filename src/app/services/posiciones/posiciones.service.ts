@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Posicion } from '@interfaces/posicion.interface';
+import { Posicion, Goleador } from '@interfaces/posicion.interface';
 import { environment } from '@environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -27,6 +27,21 @@ export class PosicionesService {
     return this.http
       .get<{ success: boolean, data: Posicion[] }>(
         `${environment.apiUrl}/posiciones/edicion/${idedicion}`,
+        { headers }
+      )
+      .pipe(map(response => response.data));
+  }
+
+  getGoleadoresById(idedicion: number): Observable<Goleador[]> {
+    const token = this.authService.getToken();
+
+    const headers = {
+      Authorization: `Bearer ${token}`
+    };
+
+    return this.http
+      .get<{ success: boolean, data: Goleador[] }>(
+        `${environment.apiUrl}/goleadores/edicion/${idedicion}`,
         { headers }
       )
       .pipe(map(response => response.data));

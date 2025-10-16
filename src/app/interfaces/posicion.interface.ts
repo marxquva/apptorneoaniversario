@@ -1,3 +1,6 @@
+import { Equipo } from "./partido.interface";
+import { Persona } from "./team.interface";
+
 export interface Posicion {
   idequipo: number;
   equipo: string;
@@ -10,4 +13,10 @@ export interface Posicion {
   goles_en_contra: number;
   diferencia_goles: number;
   puntos: number;
+}
+
+export interface Goleador {
+  idpersona: number;
+  persona: Persona;
+  equipo: Equipo
 }
