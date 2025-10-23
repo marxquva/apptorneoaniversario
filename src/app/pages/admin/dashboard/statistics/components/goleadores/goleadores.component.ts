@@ -73,7 +73,7 @@ export class GoleadoresComponent implements OnInit {
     this.posicionesService.getGoleadoresById(edicionId).subscribe({
       next: (res) => {
         if (res) {
-          console.log(res)
+          //console.log(res)
           this.goledores.set(res);
         } else {
           this.goledores.set([]);
