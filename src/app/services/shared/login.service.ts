@@ -54,6 +54,10 @@ export class LoginService {
         "nombre_equipo": "Necromaniac"
     },
     {
+        "idequipo": 10,
+        "nombre_equipo": "Yawar Warrior"
+    },
+    {
         "idequipo": 6,
         "nombre_equipo": "Zombie Player"
     }

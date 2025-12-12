@@ -27,7 +27,7 @@ import { AuthService } from '@services/shared/auth.service';
     ReactiveFormsModule,
     MatAutocompleteModule,
     AsyncPipe,
-    MatSelectModule
+    MatSelectModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit{
   hide = signal(true);
   successMessage: string | null = null;
   errorMessage: string | null = null;
-
+  isLoading = false;
 
   torneos$!: Observable<Torneo[]>;
   equipos$!: Observable<Team[]>;
@@ -98,6 +98,8 @@ export class LoginComponent implements OnInit{
     this.errorMessage = null;
 
     if (this.loginForm.valid) {
+
+      this.isLoading = true;
       const formData = this.loginForm.value;
 
       const loginPayload = {
@@ -112,12 +114,14 @@ export class LoginComponent implements OnInit{
           //console.log('Login exitoso:', res.data.token);
           this.authService.setToken(res.data.token);
           this.router.navigate(['/admin/teams']);
+          this.isLoading = false;
         },
         error: (err) => {
           const msg = err.error?.message || 'Error al iniciar sesión';
           this.errorMessage = err.error?.message || 'Error al iniciar sesión ❌';
           //this.toastr.error(msg, 'Error');
           console.error('Error al iniciar sesión:', err.error?.message || err.message);
+          this.isLoading = false;
           //alert('Login fallido: ' + (err.error?.message || 'Error desconocido'));
         }
       });

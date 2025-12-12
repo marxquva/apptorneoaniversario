@@ -82,6 +82,7 @@ export class SidebarComponent {
         { name: 'Equipos', icon: 'groups', route: '/admin/teams' },
         { name: 'Partidos', icon: 'event', route: '/admin/matches' },
         { name: 'Estadísticas', icon: 'bar_chart', route: '/admin/statistics' },
+        { name: 'Comunicados', icon: 'message', route: '/admin/messages' },
       ],
     },
     /*{

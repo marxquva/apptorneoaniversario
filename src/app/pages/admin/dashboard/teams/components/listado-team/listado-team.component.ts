@@ -6,7 +6,6 @@ import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
 import { CommonModule } from '@angular/common';
 import { MatListModule } from "@angular/material/list";
-import { NgScrollbar } from "ngx-scrollbar";
 import { TeamService } from '@services/equipos/team.service';
 import { LoadingService } from '@services/shared/loading.service';
 import { Team } from '@interfaces/team.interface';
@@ -17,7 +16,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-listado-team',
-  imports: [RouterModule, MatButtonModule, MatIconModule, MatCardModule, MatInputModule, CommonModule, MatListModule, NgScrollbar],
+  imports: [RouterModule, MatButtonModule, MatIconModule, MatCardModule, MatInputModule, CommonModule, MatListModule],
   templateUrl: './listado-team.component.html',
   styleUrl: './listado-team.component.scss'
 })

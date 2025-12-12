@@ -3,7 +3,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from "@angular/material/icon";
 import { MatCardModule } from "@angular/material/card";
 import { MatInputModule } from "@angular/material/input";
-import { NgScrollbar } from 'ngx-scrollbar';
 import { MatListModule } from "@angular/material/list";
 import { SinDatosComponent } from "@components/shared/sin-datos/sin-datos.component";
 
@@ -16,7 +15,7 @@ interface Contact {
 
 @Component({
   selector: 'app-resumen',
-  imports: [MatButtonModule, MatIconModule, MatCardModule, MatInputModule, NgScrollbar, MatListModule, SinDatosComponent],
+  imports: [MatButtonModule, MatIconModule, MatCardModule, MatInputModule, MatListModule, SinDatosComponent],
   templateUrl: './resumen.component.html',
   styleUrl: './resumen.component.scss'
 })
