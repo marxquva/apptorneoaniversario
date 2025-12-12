@@ -1,59 +1,73 @@
-# Apptorneoaniversario
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.15.
+# 🏆 Aplicación Deportiva – Angular 19
+Esta es una aplicación web desarrollada con Angular 19 enfocada en la gestión y visualización de información deportiva. Permite a usuarios consultar datos actualizados sobre jugadores, partidos y competiciones, ofreciendo una interfaz moderna, rápida y responsiva.
 
-## Development server
+## 📌 Características principales
+👥 Listado de jugadores con detalles individuales.
 
-To start a local development server, run:
+📊 Tabla de posiciones actualizada por torneo o categoría.
+
+🗓️ Fixture completo con fechas, horarios y enfrentamientos.
+
+⚽ Resultados de partidos en tiempo real o cargados manualmente.
+
+📢 Comunicados o noticias importantes del club/torneo.
+
+📈 Estadísticas deportivas globales e individuales.
+
+🔐 Sistema de autenticación JWT para manejo seguro de sesiones.
+
+🎨 Interfaz construida con Angular Material, siguiendo principios de diseño moderno.
+
+## 🛠️ Tecnologías utilizadas
+| Tecnología               | Uso                                               |
+| ------------------------ | ------------------------------------------------- |
+| **Angular 19**           | Framework principal para la aplicación web        |
+| **TypeScript**           | Lenguaje base tipado para mejor mantenibilidad    |
+| **Angular Material**     | Componentes UI modernos y accesibles              |
+| **RxJS**                 | Programación reactiva y manejo de flujos de datos |
+| **JWT (JSON Web Token)** | Autenticación y autorización                      |
+| **Servicios REST**       | Comunicación con la API backend                   |
+| **HTML / Material**      | Maquetación y estilos                             |
+
+
+## 🏗️ Arquitectura del proyecto:
+El proyecto sigue una arquitectura modular y organizada en capas, diseñada para mantener el código escalable, reutilizable y fácil de mantener. La estructura principal se divide en diferentes carpetas, cada una con una responsabilidad claramente definida:
+
+- **Pages** sirven como contenedores principales que representan vistas completas.
+
+Estas páginas utilizan **components** reutilizables para construir la UI.
+
+- Los **services** proporcionan datos y lógica, conectándose con el backend mediante HTTP y usando RxJS.
+
+- **interfaces** aseguran tipado estricto en todo el proyecto.
+
+- **pipes** y **directivas** enriquecen la presentación y el comportamiento de la app.
+
+- **templat**e define la estructura general de navegación y diseño.
+
+- **environments** permiten cambiar configuraciones sin modificar el código fuente.
+
+## Diseño Responsive: 
+El diseño se validó para funcionar correctamente tanto en dispositivos móviles como en escritorio, usando las utilidades de Material Angular.
+
+## Compatibilidad
+Node 20.15.0.
+
+## Desplegar aplicacion
+Instalar dependencias de la aplicacion:
 
 ```bash
-ng serve
+npm install
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Para iniciar un servidor de desarrollo local, ejecute:
 
 ```bash
-ng generate component component-name
+npm serve
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Aplicacion disponible
 
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Aplicacion deportiva Angular 19, Angular Material, NodeJS y PostgreSQL [Aplicacion Angular](https://apptorneoaniversario.onrender.com/)
+Clave de acceso: campeones
