@@ -5,11 +5,11 @@ Esta es una aplicación web desarrollada con Angular 19 enfocada en la gestión 
 ## 📌 Características principales
 👥 Listado de jugadores con detalles individuales.
 
-📊 Tabla de posiciones actualizada por torneo o categoría.
+📊 Tabla de posiciones del torneo actualizada.
 
 🗓️ Fixture completo con fechas, horarios y enfrentamientos.
 
-⚽ Resultados de partidos en tiempo real o cargados manualmente.
+⚽ Resultados de partidos.
 
 📢 Comunicados o noticias importantes del club/torneo.
 
