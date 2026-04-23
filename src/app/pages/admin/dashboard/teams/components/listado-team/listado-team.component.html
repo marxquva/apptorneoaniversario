@@ -31,7 +31,7 @@
         </div>
 
         <div class="d-flex flex-col">
-            <ng-scrollbar style="height: 71vh">
+            
             <mat-list>
                 <ng-container *ngFor="let team of filteredTeams(); let last = last">
                     <mat-list-item>
@@ -64,7 +64,7 @@
                     <mat-divider *ngIf="!last"></mat-divider>
                 </ng-container>
             </mat-list>
-            </ng-scrollbar>        </div>
+        </div>
 
     </mat-card-content>
   </mat-card>

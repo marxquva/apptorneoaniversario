@@ -1,0 +1,27 @@
+<app-breadcrumb [title]="'Comunicados'" [items]="breadcrumbItems"></app-breadcrumb>
+<ng-container *ngIf="isLoading(); else content">
+  <div class="loading-container">
+    <div class="d-flex flex-col align-items-center">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p class="m-t-16">Cargando comunicados...</p>
+    </div>
+  </div>
+</ng-container>
+<ng-template #content>
+    <mat-card *ngFor="let mensaje of comunicados(); let i = index" class="m-b-16">
+        <mat-card-content class="border-left-box">
+            <div class="d-flex align-items-center justify-content-between gap-3">
+                <div class="d-flex flex-col justify-content-between gap-1">
+                    <h5 class="f-w-600 f-s-16 h-title">{{ mensaje.titulo }} </h5>
+                    <p class="f-s-12 text-secondary">{{mensaje.fecha_creacion| date:'dd/MM/yyyy' }}</p>
+                </div>
+                <div class="f-s-14">{{mensaje.mensaje}}</div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div *ngIf="comunicados().length === 0" class="d-flex justify-content-center">
+        <app-sin-datos [title]="'Sin mensajes'"></app-sin-datos>
+    </div>
+</ng-template>
+
+

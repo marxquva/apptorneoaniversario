@@ -1,139 +1,182 @@
 <app-breadcrumb [title]="'Partidos'" [items]="breadcrumbItems"></app-breadcrumb>
-<mat-card>
-    <mat-card-content>
-      <div class="d-flex align-items-center justify-content-between gap-3 responsive-row">
+<ng-container *ngIf="isLoading(); else content">
+  <div class="loading-container">
+    <div class="d-flex flex-col align-items-center">
+      <mat-spinner diameter="40"></mat-spinner>
+      <p class="m-t-16">Cargando fixture...</p>
+    </div>
+  </div>
+</ng-container>
+<ng-template #content>
+    <mat-card>
+        <mat-card-content>
+        <div class="d-flex align-items-center justify-content-between gap-3 responsive-row">
 
-        <div class="m-t-12">
+            <div class="m-t-12">
+                <mat-form-field appearance="outline">
+                    <mat-label>Seleccionar fecha</mat-label>
+                    <mat-select [(ngModel)]="faseSeleccionada" (selectionChange)="filtrarPorFase()">
+                    <mat-option *ngFor="let fase of fases" [value]="fase.idfase">
+                        {{ fase.nombre }}
+                    </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+
+            <div class="d-flex align-items-center gap-8">
+                <label id="example-radio-group-label" class="f-w-600 d-block f-s-14">Campo</label>
+                
+               <mat-radio-group
+                aria-labelledby="example-radio-group-label"
+                class="example-radio-group"
+                [(ngModel)]="favoriteSeason"
+                (change)="filtrarPorCancha()"
+                >
+                <mat-radio-button
+                    class="example-radio-button"
+                    color="primary"
+                    *ngFor="let season of seasons"
+                    [value]="season.cancha.idcancha"
+                >
+                    {{ season.cancha.nombre_cancha }}
+                </mat-radio-button>
+                </mat-radio-group>
+
+            </div>
+
+
+            <!-- Search bar -->
+            <div>
             <mat-form-field appearance="outline">
-                <mat-label>Seleccionar fecha</mat-label>
-                <mat-select value="in">
-                    <mat-option value="in">Fecha 1</mat-option>
-                    <mat-option value="fr">Fecha 2</mat-option>
-                    <mat-option value="af">Fecha 3</mat-option>
-                </mat-select>
+                <mat-icon matPrefix>search</mat-icon>
+                <input
+                  matInput
+                  #searchInput
+                  placeholder="Buscar equipo"
+                  (input)="onSearchChange(searchInput.value)"
+                />
             </mat-form-field>
-        </div>
-
-        <!-- Followers info -->
-        <div class="d-flex align-items-center gap-8">
-
-            <label id="example-radio-group-label" class="f-w-600 d-block f-s-14">Campo</label>
-            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
-            [(ngModel)]="favoriteSeason">
-            @for(season of seasons; track season) {
-            <mat-radio-button class="example-radio-button" color="primary" [value]="season">
-            {{ season }}
-            </mat-radio-button>
-            }
-            </mat-radio-group>
-
-        </div>
-
-        <!-- Search bar -->
-        <div>
-          <mat-form-field appearance="outline">
-            <mat-icon matPrefix>search</mat-icon>
-            <input matInput placeholder="Buscar equipo" />
-          </mat-form-field>
-        </div>
-      </div>
-
-    </mat-card-content>
-</mat-card>
-<app-sin-datos [title]="'Sin partidos'"></app-sin-datos>
-<!--
-<div class="grid-container-middle">
-    
-    <mat-card>
-        <mat-card-content class="text-center">
-           
-            <div class="d-flex flex-col gap-20"><div>
-                <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                    <span class="bg-warning text-white rounded p-6">
-                        FECHA 1 - CAMPO 1 - 10:00 AM
-                    </span>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-center">
-                    <img src="assets/images/profile/user-1.jpg" alt="User" width="70" class="rounded" />
-                    <div class="m-l-12">
-                        <mat-card-title>Burn in hell</mat-card-title>
-                    </div>
-                    <div class="d-flex align-items-center m-l-12">
-                        <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
-                            2
-                        </span>
-                    </div>
-                    <div class="d-flex align-items-center m-l-12"> vs </div>
-                    <div class="d-flex align-items-center m-l-12">
-                        <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
-                            1
-                        </span>
-                    </div>
-                    <div class="m-l-12">
-                        <mat-card-title>Headbangers FC</mat-card-title>
-                    </div>
-                    <img src="assets/images/profile/user-2.jpg" alt="User" width="70" class="rounded m-l-12" />
-                </div>
-
-                <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                    <button mat-button (click)="abrirModalDetalle()">
-                        <div class="d-flex align-items-center">
-                            <mat-icon>remove_red_eye</mat-icon>
-                            <span class="m-l-6"> Detalles </span>
-                        </div>
-                    </button>
-                </div>
             </div>
-
         </div>
+
         </mat-card-content>
     </mat-card>
 
-    <mat-card>
-        <mat-card-content class="text-center">
-           
-            <div class="d-flex flex-col gap-20"><div>
-                <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                    <span class="bg-warning text-white rounded p-6">
-                        10:00 AM
-                    </span>
-                </div>
-
-                <div class="d-flex align-items-center justify-content-center">
-                    <img src="assets/images/profile/user-1.jpg" alt="User" width="70" class="rounded" />
-                    <div class="m-l-12">
-                        <mat-card-title>Alcoholica FC</mat-card-title>
-                    </div>
-                    <div class="d-flex align-items-center m-l-12">
-                        <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
-                            -
+    <!--
+        <mat-card>
+            <mat-card-content class="text-center">
+            
+                <div class="d-flex flex-col gap-20"><div>
+                    <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
+                        <span class="bg-warning text-white rounded p-6">
+                            FECHA 1 - CAMPO 1 - 10:00 AM
                         </span>
                     </div>
-                    <div class="d-flex align-items-center m-l-12"> vs </div>
-                    <div class="d-flex align-items-center m-l-12">
-                        <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
-                            -
-                        </span>
-                    </div>
-                    <div class="m-l-12">
-                        <mat-card-title>Doomstermania</mat-card-title>
-                    </div>
-                    <img src="assets/images/profile/user-2.jpg" alt="User" width="70" class="rounded m-l-12" />
-                </div>
 
-                <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
-                    <button mat-button disabled>
-                        <div class="d-flex align-items-center">
-                            <mat-icon>remove_red_eye</mat-icon>
-                            <span class="m-l-6"> Detalles </span>
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="assets/images/profile/user-1.jpg" alt="User" width="70" class="rounded" />
+                        <div class="m-l-12">
+                            <mat-card-title>Burn in hell</mat-card-title>
                         </div>
-                    </button>
-                </div>
-            </div>
+                        <div class="d-flex align-items-center m-l-12">
+                            <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
+                                2
+                            </span>
+                        </div>
+                        <div class="d-flex align-items-center m-l-12"> vs </div>
+                        <div class="d-flex align-items-center m-l-12">
+                            <span class="d-flex align-items-center bg-light-secondary icon-40 justify-content-center rounded text-secondary">
+                                1
+                            </span>
+                        </div>
+                        <div class="m-l-12">
+                            <mat-card-title>Headbangers FC</mat-card-title>
+                        </div>
+                        <img src="assets/images/profile/user-2.jpg" alt="User" width="70" class="rounded m-l-12" />
+                    </div>
 
+                    <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
+                        <button mat-button (click)="abrirModalDetalle()">
+                            <div class="d-flex align-items-center">
+                                <mat-icon>remove_red_eye</mat-icon>
+                                <span class="m-l-6"> Detalles </span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+            </mat-card-content>
+        </mat-card>
+    -->
+
+    <ng-container *ngFor="let grupo of partidosFiltrados()">
+        <h2 class="text-center m-t-24 m-b-16">{{ grupo.nombre_cancha }}</h2>
+        <div class="grid-container-middle">
+            <mat-card *ngFor="let partido of grupo.partidos">
+                <mat-card-content class="text-center">
+
+                    <div class="d-flex flex-col gap-20">
+
+                        <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
+                            <span class="bg-warning text-white rounded p-6 min-title-text">
+                                {{ partido.hora_partido | date: 'shortTime' }}
+                            </span>
+                        </div>
+
+                        <div class="d-flex align-items-center justify-content-center">
+
+                            <img
+                            [src]="partido.localEquipo?.logotipo || 'assets/images/profile/default.jpg'"
+                            alt="Local"
+                            width="70"
+                            class="rounded"
+                            />
+                            <div class="m-l-12">
+                                <mat-card-title>{{ partido.localEquipo?.nombre_equipo }}</mat-card-title>
+                            </div>
+
+                            <div class="d-flex align-items-center m-l-12">
+                                <span class="d-flex align-items-center bg-light-secondary icon-30 justify-content-center rounded text-secondary">
+                                    {{ partido.localGoles }}
+                                </span>
+                            </div>
+
+                            <div class="d-flex align-items-center m-l-12">vs</div>
+
+                            <div class="d-flex align-items-center m-l-12">
+                                <span class="d-flex align-items-center bg-light-secondary icon-30 justify-content-center rounded text-secondary">
+                                    {{ partido.visitanteGoles }}
+                                </span>
+                            </div>
+
+                            <div class="m-l-12">
+                                <mat-card-title>{{ partido.visitanteEquipo?.nombre_equipo }}</mat-card-title>
+                            </div>
+
+                            <img
+                            [src]="partido.visitanteEquipo?.logotipo || 'assets/images/profile/default.jpg'"
+                            alt="Visitante"
+                            width="70"
+                            class="rounded m-l-12"
+                            />
+                        </div>
+
+                        <div class="d-flex flex-sm-row flex-col align-items-center justify-content-center gap-8">
+                            <span [ngClass]="getResultadoClass(partido.situacion.idsituacionpartido)" class="rounded p-6 min-title-text">
+                                {{ partido.situacion.nombre_situacion }}
+                            </span>
+                        </div>
+
+                    </div>
+
+                </mat-card-content>
+            </mat-card>
         </div>
-        </mat-card-content>
-    </mat-card>
-</div>
--->
+    </ng-container>
+
+    <div *ngIf="partidos().length === 0" class="d-flex justify-content-center">
+        <app-sin-datos [title]="'Sin partidos programados'"></app-sin-datos>
+    </div>
+</ng-template>

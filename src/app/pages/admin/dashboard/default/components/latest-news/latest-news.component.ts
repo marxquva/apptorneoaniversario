@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { NgApexchartsModule } from 'ng-apexcharts';
 import { NgScrollbar } from 'ngx-scrollbar';
 
 interface stats {
@@ -14,7 +13,7 @@ interface stats {
 
 @Component({
   selector: 'app-latest-news',
-  imports: [MatCardModule, NgApexchartsModule, NgScrollbar],
+  imports: [MatCardModule, NgScrollbar],
   templateUrl: './latest-news.component.html',
   styleUrl: './latest-news.component.scss'
 })

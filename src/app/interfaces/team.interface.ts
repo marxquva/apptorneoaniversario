@@ -3,6 +3,7 @@ export interface Persona {
   apellidos: string;
   imagen: string | null;
   fecha_nacimiento: string | null;
+  edad: number;
   urlfacebook: string;
 }
 

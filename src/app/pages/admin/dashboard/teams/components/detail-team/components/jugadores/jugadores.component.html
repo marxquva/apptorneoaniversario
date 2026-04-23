@@ -53,7 +53,17 @@
 
                   </span>
                   <span> | Edad: </span>
-                  <span class="f-s-12 f-w-600">{{ player.Persona.fecha_nacimiento | fechaNacimiento:'edad' }}</span>
+                  <!--<span class="f-s-12 f-w-600">{{ player.Persona.fecha_nacimiento | fechaNacimiento:'edad' }}</span>-->
+                  <span class="f-s-12 f-w-600">
+                    <ng-container *ngIf="player.Persona.fecha_nacimiento; else edadManual">
+                      {{ player.Persona.fecha_nacimiento | fechaNacimiento:'edad' }}
+                    </ng-container>
+                    <ng-template #edadManual>
+                      {{ player.Persona.edad ? (player.Persona.edad + ' años') : 'Edad no disponible' }}
+                    </ng-template>
+                  </span>
+
+
                   
                 </div>
                 <mat-divider class="p-y-4 m-t-4"></mat-divider>
